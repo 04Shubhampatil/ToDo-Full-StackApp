@@ -1,10 +1,18 @@
 import React from 'react'
+import Singup from './components/Singup'
+import Login from './components/Login.'
+import { BrowserRouter,Routes,Route,Navigate } from 'react-router-dom'
+
 
 const App:React.FC = () => {
   return (
-    <div className='bg-zinc-400'>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos perspiciatis aliquid nemo error enim officiis quasi. Amet obcaecati, similique quibusdam qui beatae explicabo, eum expedita voluptatem, error est maiores quaerat.
-    </div>
+   <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Navigate to="/login"/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/singup' element={<Singup/>}/>
+    </Routes>
+    </BrowserRouter>
   )
 }
 
