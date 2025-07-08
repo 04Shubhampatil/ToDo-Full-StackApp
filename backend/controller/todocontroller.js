@@ -55,4 +55,31 @@ const deleteTodo = async (req, res) => {
     res.status(500).json({ message: error.message, success: false }); 
   }
 }
-export { getTodos, addTodo, updateTodo, deleteTodo };
+
+// ... existing deleteTodo code ...
+
+const completeTodo = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const todo = await Todo.findById(id);
+    if (!todo) {
+      return res.status(404).json({ message: "Todo not found", success: false });
+    }
+    
+    // Toggle the completion status
+    todo.completed = !todo.completed;
+    await todo.save();
+    
+    res.status(200).json({ 
+      message: "Todo status updated successfully", 
+      success: true,
+      completed: todo.completed
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message, success: false });
+  }
+}
+
+export { getTodos, addTodo, updateTodo, deleteTodo, completeTodo };
+
+

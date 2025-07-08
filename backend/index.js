@@ -4,7 +4,6 @@ import connectDB from './db/db.js';
 import bodyParser from 'body-parser';
 import "dotenv/config"
 import userRoutes from './routes/userrouter.js'
-import productRouter from './routes/productrouter.js'
 import todoRouter from './routes/todo.router.js'
 
 const app = express();
